@@ -4,6 +4,7 @@ using Basket.API.Repositories.Interfaces;
 using EventBusRabbitMQ.Common;
 using EventBusRabbitMQ.Events;
 using EventBusRabbitMQ.Producers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -31,6 +32,7 @@ namespace Basket.API.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(BasketCart), (int)HttpStatusCode.OK)]
+        [Authorize]
         public async Task<ActionResult<BasketCart>> GetBasket(string userName)
         {
             var basket = await _repository.GetBasket(userName);
