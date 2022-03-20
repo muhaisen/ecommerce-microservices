@@ -69,6 +69,7 @@ namespace Catalog.API.Controllers
 
         [HttpPut]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+        [Authorize("update:product")]
         public async Task<IActionResult> UpdateProduct([FromBody] Product value)
         {
             return Ok(await _repository.Update(value));

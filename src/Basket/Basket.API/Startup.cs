@@ -22,6 +22,7 @@ using RabbitMQ.Client;
 using StackExchange.Redis;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Basket.API.Auth;
 
 namespace Basket.API
 {
@@ -98,15 +99,15 @@ namespace Basket.API
                     options.Audience = Configuration["Auth0:Audience"];
                 });
 
-            //services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("read:messages", policy => policy.Requirements.Add(new HasScopeRequirement("read:messages", domain)));
-            //});
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("update:basket", policy => policy.Requirements.Add(new HasScopeRequirement("update:basket", domain)));
+            });
 
             services.AddControllers();
 
             // Register the scope authorization handler
-            //services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
+            services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

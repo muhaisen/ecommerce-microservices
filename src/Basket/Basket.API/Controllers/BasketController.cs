@@ -42,6 +42,7 @@ namespace Basket.API.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(BasketCart), (int)HttpStatusCode.OK)]
+        [Authorize("update:basket")]
         public async Task<ActionResult<BasketCart>> UpdateBasket([FromBody]BasketCart basket)
         {
             return Ok(await _repository.UpdateBasket(basket));

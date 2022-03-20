@@ -18,6 +18,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Catalog.API.Auth;
 
 namespace Catalog.API
 {
@@ -68,15 +69,15 @@ namespace Catalog.API
                     options.Audience = Configuration["Auth0:Audience"];
                 });
 
-            //services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("read:messages", policy => policy.Requirements.Add(new HasScopeRequirement("read:messages", domain)));
-            //});
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("update:product", policy => policy.Requirements.Add(new HasScopeRequirement("update:product", domain)));
+            });
 
             services.AddControllers();
 
             // Register the scope authorization handler
-            //services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
+            services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
