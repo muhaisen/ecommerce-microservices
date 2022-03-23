@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
     <UserSecretsId>b77bad13-5c4d-4e9f-a376-ab5ee3d58fc5</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2" />
   </ItemGroup>
 
 </Project>
