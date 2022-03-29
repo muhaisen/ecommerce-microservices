@@ -6,7 +6,9 @@ namespace Catalog.API.Repositories.Interfaces
 {
     public interface IRbacRepository
     {
-        Task<Principal> GetRole(string Id);
-        Task<Principal> UpdateRole(string Id, List<string> Permissions);
+        Task<Principal> GetRole(string id);
+        Task<Principal> UpdateRole(string id, List<string> permissions);
+        Task<bool> DeleteRole(string id);
+
     }
 }

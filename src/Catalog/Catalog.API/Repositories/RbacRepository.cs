@@ -17,11 +17,11 @@ namespace Catalog.API.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<Principal> GetRole(string Id)
+        public async Task<Principal> GetRole(string id)
         {
             var principal = await _context
                                 .Redis
-                                .StringGetAsync(Id);
+                                .StringGetAsync(id);
             if (principal.IsNullOrEmpty)
             {
                 return null;
@@ -29,26 +29,25 @@ namespace Catalog.API.Repositories
             return JsonConvert.DeserializeObject<Principal>(principal);
         }
 
-        public async Task<Principal> UpdateRole(string Id,List<string> Permissions)
+        public async Task<Principal> UpdateRole(string id,List<string> permissions)
         {
-            Principal principal= await GetRole(Id);
-            principal.Permissions.AddRange(Permissions);
+            System.Diagnostics.Debug.WriteLine(id);
+            Principal principal = new() {Id= id, Permissions = permissions };
             var updated = await _context
                               .Redis
-                              .StringSetAsync(Id, JsonConvert.SerializeObject(principal));
+                              .StringSetAsync(id, JsonConvert.SerializeObject(principal));
             if (!updated)
             {
                 return null;
             }
-            return await GetRole(Id);
+            return await GetRole(id);
         }
 
-        public async Task<bool> DeleteBasket(string Id)
+        public async Task<bool> DeleteRole(string id)
         {
             return await _context
                             .Redis
-                            .KeyDeleteAsync(Id);
+                            .KeyDeleteAsync(id);
         }
-
     }
 }

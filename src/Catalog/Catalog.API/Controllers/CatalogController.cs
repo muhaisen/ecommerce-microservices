@@ -16,11 +16,13 @@ namespace Catalog.API.Controllers
     public class CatalogController : ControllerBase
     {
         private readonly IProductRepository _repository;
+        private readonly IRbacRepository _rbac_repository;
         private readonly ILogger<CatalogController> _logger;
 
-        public CatalogController(IProductRepository repository, ILogger<CatalogController> logger)
+        public CatalogController(IProductRepository repository, ILogger<CatalogController> logger, IRbacRepository rbac_repository)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            _rbac_repository = rbac_repository ?? throw new ArgumentNullException(nameof(rbac_repository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
