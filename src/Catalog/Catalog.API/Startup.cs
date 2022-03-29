@@ -19,6 +19,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Catalog.API.Auth;
+using StackExchange.Redis;
 
 namespace Catalog.API
 {
@@ -34,6 +35,16 @@ namespace Catalog.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Redis
+            services.AddSingleton(sp =>
+            {
+                var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
+                return ConnectionMultiplexer.Connect(configuration);
+            });
+
+            services.AddTransient<IRbacContext, RbacContext>();
+            services.AddTransient<IRbacRepository, RbacRepository>();
+            //
             services.AddControllers();
 
             services.Configure<CatalogDatabaseSettings>(Configuration.GetSection(nameof(CatalogDatabaseSettings)));
