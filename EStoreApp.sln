@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29503.13
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{39F20D1B-C1CC-4346-9905-990AD61DA8ED}"
 EndProject
@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.API", "src\Basket\Ba
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{2E375542-D579-4D16-B747-BA42F89D8F10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusRabbitMQ", "src\Common\EventBusRabbitMQ\EventBusRabbitMQ.csproj", "{A8E88D5F-9738-4535-A7D9-466413524687}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusRabbitMQ", "src\Common\EventBusRabbitMQ\EventBusRabbitMQ.csproj", "{A8E88D5F-9738-4535-A7D9-466413524687}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RolesEngine", "src\Common\RolesEngine\RolesEngine.csproj", "{1B59015B-899E-4983-852E-8B87C00E7233}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{A8E88D5F-9738-4535-A7D9-466413524687}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8E88D5F-9738-4535-A7D9-466413524687}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8E88D5F-9738-4535-A7D9-466413524687}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B59015B-899E-4983-852E-8B87C00E7233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B59015B-899E-4983-852E-8B87C00E7233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B59015B-899E-4983-852E-8B87C00E7233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B59015B-899E-4983-852E-8B87C00E7233}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{986E7007-9875-46A4-8006-A859DB524ABC} = {86DD6758-DC96-4288-B52B-699D7C133F88}
 		{2E375542-D579-4D16-B747-BA42F89D8F10} = {39F20D1B-C1CC-4346-9905-990AD61DA8ED}
 		{A8E88D5F-9738-4535-A7D9-466413524687} = {2E375542-D579-4D16-B747-BA42F89D8F10}
+		{1B59015B-899E-4983-852E-8B87C00E7233} = {2E375542-D579-4D16-B747-BA42F89D8F10}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BF9BA06B-B95D-4602-B30C-90C31D9D5D2E}

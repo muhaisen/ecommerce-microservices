@@ -20,6 +20,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Catalog.API.Auth;
 using StackExchange.Redis;
+using RolesEngine.Data.Interfaces;
+using RolesEngine.Data;
+using RolesEngine.Repositories;
+using RolesEngine.Repositories.Interfaces;
 
 namespace Catalog.API
 {
@@ -44,6 +48,9 @@ namespace Catalog.API
 
             services.AddTransient<IRbacContext, RbacContext>();
             services.AddTransient<IRbacRepository, RbacRepository>();
+
+            services.AddTransient<IRolesEngineContext, RolesEngineContext>();
+            services.AddTransient<IRolesEngineRepository, RolesEngineRepository>();
             //
             services.AddControllers();
 
