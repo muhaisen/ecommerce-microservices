@@ -22,3 +22,8 @@ services:
     build:
       context: .
       dockerfile: src/Basket/Basket.API/Dockerfile
+  payment.api:
+    image: ${DOCKER_REGISTRY-}paymentapi
+    build:
+      context: .
+      dockerfile: src/Payment/Payment.API/Dockerfile
